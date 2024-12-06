@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Phantom Wallet</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.15.0/web3.min.js"></script>
+</head>
+<body>
+    <h1>Phantom Wallet Integration</h1>
+    <p id="status">Connecting...</p>
+    <button id="connectBtn">Connect Phantom Wallet</button>
+
+    <script type="module">
+        // Detect Phantom Wallet
+        const connectBtn = document.getElementById('connectBtn');
+        const status = document.getElementById('status');
+
+        async function connectPhantomWallet() {
+            if (window.solana && window.solana.isPhantom) {
+                try {
+                    // Request user to connect to the Phantom wallet
+                    const response = await window.solana.request({ method: 'connect' });
+
+                    // If successful, show wallet address
+                    const walletAddress = response.publicKey.toString();
+                    console.log('Connected to Phantom Wallet:', walletAddress);
+                    status.innerText = `Connected to Phantom Wallet with address: ${walletAddress}`;
+
+                } catch (error) {
+                    console.error('Error connecting to Phantom Wallet:', error);
+                    status.innerText = 'Error connecting to Phantom Wallet. Please check the console.';
+                }
+            } else {
+                console.log('Phantom Wallet is not installed');
+                status.innerText = 'Phantom Wallet is not installed. Please install it first.';
+            }
+        }
+
+        // Event listener for button click
+        connectBtn.addEventListener('click', connectPhantomWallet);
+    </script>
+</body>
+</html>

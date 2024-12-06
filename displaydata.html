@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Data Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .data-section {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>User Information</h1>
+  
+  <div id="user-data"></div>
+
+  <script>
+    // The provided JSON data
+    const jsonData = {
+      "name": "Alice",
+      "age": 30,
+      "isStudent": false
+    };
+
+    // Function to display the JSON data
+    function displayData(data) {
+      const container = document.getElementById('user-data');
+
+      // Name
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'data-section';
+      nameDiv.innerHTML = `<strong>Name:</strong> ${data.name}`;
+      container.appendChild(nameDiv);
+
+      // Age
+      const ageDiv = document.createElement('div');
+      ageDiv.className = 'data-section';
+      ageDiv.innerHTML = `<strong>Age:</strong> ${data.age}`;
+      container.appendChild(ageDiv);
+
+      // Student status
+      const studentStatusDiv = document.createElement('div');
+      studentStatusDiv.className = 'data-section';
+      studentStatusDiv.innerHTML = `<strong>Is Student:</strong> ${data.isStudent ? 'Yes' : 'No'}`;
+      container.appendChild(studentStatusDiv);
+    }
+
+    // Call the function to display the data
+    displayData(jsonData);
+  </script>
+
+</body>
+</html>

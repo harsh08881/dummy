@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Detection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="deviceMessage"></h1>
+
+  <script>
+    function detectDevice() {
+      const width = window.innerWidth;
+      const deviceMessage = document.getElementById("deviceMessage");
+
+      if (width <= 480) {
+        deviceMessage.textContent = "Hello Mobile";
+      } 
+      else if (width > 480 && width <= 768) {
+        deviceMessage.textContent = "Hello Tablet";
+      } 
+      else if (width > 768 && width <= 1024) {
+        deviceMessage.textContent = "Hello Tablet";
+      } 
+      else if (width > 1024 && width <= 1280) {
+        deviceMessage.textContent = "Hello Small Laptop";
+      } 
+      else if (width > 1280 && width <= 1440) {
+        deviceMessage.textContent = "Hello Laptop";
+      } 
+      else if (width > 1440) {
+        deviceMessage.textContent = "Hello Desktop";
+      }
+    }
+
+    // Run the function on page load
+    window.onload = detectDevice;
+
+    // Re-run on window resize
+    window.onresize = detectDevice;
+  </script>
+
+</body>
+</html>

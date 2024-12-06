@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkboxes label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #errorMessage {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login with Number</h2>
+
+    <form id="loginForm">
+        <input type="text" id="phoneNumber" placeholder="Enter your phone number" oninput="checkForm()" maxlength="10" pattern="\d{10}" required>
+        
+        <div class="checkboxes">
+            <label>
+                <input type="checkbox" id="termsCheckbox" onclick="checkForm()"> I accept the <a href="#">Terms and Conditions</a>
+            </label><br>
+            <label>
+                <input type="checkbox" id="whatsappCheckbox" onclick="checkForm()"> Send updates on WhatsApp
+            </label>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+    
+    <div id="errorMessage">Please tick the boxes before submitting.</div>
+</div>
+
+<script>
+    function checkForm() {
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const termsCheckbox = document.getElementById('termsCheckbox').checked;
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Enable submit button if phone number is filled and terms checkbox is checked
+        if (phoneNumber.length === 10 && termsCheckbox) {
+            submitBtn.disabled = false;
+            errorMessage.style.display = "none";
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    document.getElementById('loginForm').onsubmit = function(event) {
+        const termsCheckbox = document.getElementById('termsCheckbox').checked;
+        
+        // Prevent form submission if terms checkbox is not checked
+        if (!termsCheckbox) {
+            event.preventDefault();
+            document.getElementById('errorMessage').style.display = "block";
+        }
+    };
+</script>
+
+</body>
+</html>

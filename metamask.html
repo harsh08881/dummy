@@ -21,6 +21,7 @@
                 try {
                     // Request user to connect to the Phantom wallet
                     const response = await window.solana.request({ method: 'connect' });
+                    // console.log(response.publicKey);
 
                     // If successful, show wallet address
                     const walletAddress = response.publicKey.toString();

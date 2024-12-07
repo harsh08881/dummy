@@ -19,6 +19,7 @@
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
     }
 
     .modal-header {
@@ -115,9 +116,18 @@
       text-decoration: none;
       font-weight: bold;
     }
+    .btn{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* transform: translate(-50%,-50%); */
+      
+    }
   </style>
 </head>
 <body>
+
+  <button class="btn" onclick="loginpop()">Click Me</button>
   <div class="modal">
     <div class="modal-header">Select Delivery Address</div>
 
@@ -176,6 +186,15 @@
       // Append the 'Default' tag to the address content
       const strongElement = addressContent.querySelector('strong');
       strongElement.appendChild(defaultTag);
+    }
+    
+    function loginpop() {
+      const modalElement = document.querySelector('.modal');
+      const buttonElement = document.querySelector('.btn');
+      if (modalElement) {
+        modalElement.style.display = 'block';
+         buttonElement.style.display ='none';
+      }
     }
   </script>
 </body>

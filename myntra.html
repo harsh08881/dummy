@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Delivery Address</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .modal {
+      width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .input-group input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .input-group button {
+      padding: 8px 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .saved-address {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .address-item {
+      display: flex;
+      align-items: flex-start;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      gap: 10px;
+    }
+
+    .address-item input[type="radio"] {
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .address-content {
+      flex: 1;
+    }
+
+    .actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-edit {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .default-tag {
+      background-color: #28a745;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .add-address {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .add-address a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <div class="modal-header">Select Delivery Address</div>
+
+    <div class="input-group">
+      <input type="text" placeholder="Enter Pincode" />
+      <button>CHECK</button>
+    </div>
+
+    <div class="saved-address">
+      <div class="address-item">
+        <input type="radio" name="address" checked onclick="setDefault(this)" />
+        <div class="address-content">
+          <strong>Harsh Gupta <span class="default-tag">Default</span></strong><br />
+          Star Boys Hostel Near City Law College<br />
+          Lucknow, Uttar Pradesh - 226028<br />
+          Mobile: 9369749470
+          <div class="actions">
+            <button class="btn-edit">EDIT</button>
+            <button class="btn-delete">DELETE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="address-item">
+        <input type="radio" name="address" onclick="setDefault(this)" />
+        <div class="address-content">
+          <strong>Kumar Harsh Gupta</strong><br />
+          Batganj pulia bawan chungi hardoi<br />
+          Hardoi, Uttar Pradesh
+          <div class="actions">
+            <button class="btn-edit">EDIT</button>
+            <button class="btn-delete">DELETE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-address">
+      <a href="#">+ Add New Address</a>
+    </div>
+  </div>
+
+  <script>
+    function setDefault(selectedRadio) {
+      // Remove the 'Default' tag from all addresses
+      document.querySelectorAll('.default-tag').forEach(tag => tag.remove());
+
+      // Find the closest address content div of the selected radio
+      const addressContent = selectedRadio.closest('.address-item').querySelector('.address-content');
+
+      // Add the 'Default' tag
+      const defaultTag = document.createElement('span');
+      defaultTag.className = 'default-tag';
+      defaultTag.textContent = 'Default';
+
+      // Append the 'Default' tag to the address content
+      const strongElement = addressContent.querySelector('strong');
+      strongElement.appendChild(defaultTag);
+    }
+  </script>
+</body>
+</html>

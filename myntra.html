@@ -1,216 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Delivery Address</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .modal {
-      width: 400px;
-      margin: auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
-
-    .modal-header {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .input-group {
-      display: flex;
-      margin-bottom: 15px;
-    }
-
-    .input-group input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .input-group button {
-      padding: 8px 16px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      margin-left: 8px;
-    }
-
-    .saved-address {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .address-item {
-      display: flex;
-      align-items: flex-start;
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 4px;
-      gap: 10px;
-    }
-
-    .address-item input[type="radio"] {
-      margin-top: 8px;
-      flex-shrink: 0;
-    }
-
-    .address-content {
-      flex: 1;
-    }
-
-    .actions {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-    }
-
-    button {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .btn-edit {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .btn-delete {
-      background-color: #dc3545;
-      color: white;
-    }
-
-    .default-tag {
-      background-color: #28a745;
-      color: white;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 8px;
-    }
-
-    .add-address {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .add-address a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      /* transform: translate(-50%,-50%); */
-      
-    }
-  </style>
-</head>
-<body>
-
-  <button class="btn" onclick="loginpop()">Click Me</button>
-  <div class="modal">
-    <div class="modal-header">Select Delivery Address</div>
-
-    <div class="input-group">
-      <input type="text" placeholder="Enter Pincode" />
-      <button>CHECK</button>
-    </div>
-
-    <div class="saved-address">
-      <div class="address-item">
-        <input type="radio" name="address" checked onclick="setDefault(this)" />
-        <div class="address-content">
-          <strong>Harsh Gupta <span class="default-tag">Default</span></strong><br />
-          Star Boys Hostel Near City Law College<br />
-          Lucknow, Uttar Pradesh - 226028<br />
-          Mobile: 9369749470
-          <div class="actions">
-            <button class="btn-edit">EDIT</button>
-            <button class="btn-delete" onclick="deleteAddress(this)">DELETE</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="address-item">
-        <input type="radio" name="address" onclick="setDefault(this)" />
-        <div class="address-content">
-          <strong>Kumar Harsh Gupta</strong><br />
-          Batganj pulia bawan chungi hardoi<br />
-          Hardoi, Uttar Pradesh
-          <div class="actions">
-            <button class="btn-edit">EDIT</button>
-            <button class="btn-delete" onclick="deleteAddress(this)">DELETE</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="add-address">
-      <a href="#">+ Add New Address</a>
-    </div>
-  </div>
-
-  <script>
-    function setDefault(selectedRadio) {
-      // Remove the 'Default' tag from all addresses
-      document.querySelectorAll('.default-tag').forEach(tag => tag.remove());
-
-      // Find the closest address content div of the selected radio
-      const addressContent = selectedRadio.closest('.address-item').querySelector('.address-content');
-
-      // Add the 'Default' tag
-      const defaultTag = document.createElement('span');
-      defaultTag.className = 'default-tag';
-      defaultTag.textContent = 'Default';
-
-      // Append the 'Default' tag to the address content
-      const strongElement = addressContent.querySelector('strong');
-      strongElement.appendChild(defaultTag);
-    }
-    
-    function loginpop() {
-      const modalElement = document.querySelector('.modal');
-      const buttonElement = document.querySelector('.btn');
-      if (modalElement) {
-        modalElement.style.display = 'block';
-         buttonElement.style.display = 'none';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Delivery Address</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
-    }
 
-    function deleteAddress(button) {
-  // Find the address card (parent '.address-item') of the clicked button
-  const addressCard = button.closest('.address-item');
-  
-  // Remove the address card from the DOM
-  if (addressCard) {
-    addressCard.remove();
-  }
-}
+      .modal {
+        width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none;
+        position: relative;
+      }
 
-  </script>
-</body>
+      .modal-header {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .input-group input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .input-group button {
+        padding: 8px 16px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-left: 8px;
+      }
+
+      .saved-address {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .address-item {
+        display: flex;
+        align-items: flex-start;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 4px;
+        gap: 10px;
+      }
+
+      .address-item input[type="radio"] {
+        margin-top: 8px;
+        flex-shrink: 0;
+      }
+
+      .address-content {
+        flex: 1;
+      }
+
+      .actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .btn-edit {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .btn-delete {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .default-tag {
+        background-color: #28a745;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+      }
+
+      .add-address {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .add-address a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+
+      .add-address-form {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .add-address-form input {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .add-address-form button {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn" onclick="loginpop()">Click Me</button>
+    <div class="modal">
+      <div class="modal-header">Select Delivery Address</div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Enter Pincode" />
+        <button>CHECK</button>
+      </div>
+
+      <div class="saved-address">
+        <div class="address-item">
+          <input
+            type="radio"
+            name="address"
+            checked
+            onclick="setDefault(this)"
+          />
+          <div class="address-content">
+            <strong>Harsh Gupta <span class="default-tag">Default</span></strong
+            ><br />
+            Star Boys Hostel Near City Law College<br />
+            Lucknow, Uttar Pradesh - 226028<br />
+            Mobile: 9369749470
+            <div class="actions">
+              <button class="btn-edit">EDIT</button>
+              <button class="btn-delete" onclick="deleteAddress(this)">
+                DELETE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-address">
+        <a href="#" onclick="toggleAddAddressForm()">+ Add New Address</a>
+      </div>
+
+      <div class="add-address-form">
+        <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="address" placeholder="Address" />
+        <input type="text" id="city" placeholder="City" />
+        <input type="text" id="state" placeholder="State" />
+        <input type="text" id="mobile" placeholder="Mobile Number" />
+        <button onclick="addAddress()">Save Address</button>
+      </div>
+    </div>
+
+    <script>
+      function setDefault(selectedRadio) {
+        document
+          .querySelectorAll(".default-tag")
+          .forEach((tag) => tag.remove());
+        const addressContent = selectedRadio
+          .closest(".address-item")
+          .querySelector(".address-content");
+        const defaultTag = document.createElement("span");
+        defaultTag.className = "default-tag";
+        defaultTag.textContent = "Default";
+        addressContent.querySelector("strong").appendChild(defaultTag);
+      }
+
+      function loginpop() {
+        document.querySelector(".modal").style.display = "block";
+        document.querySelector(".btn").style.display = "none";
+      }
+
+      function toggleAddAddressForm() {
+        const form = document.querySelector(".add-address-form");
+        form.style.display =
+          form.style.display === "none" || form.style.display === ""
+            ? "block"
+            : "none";
+      }
+
+      function addAddress() {
+        const nameField = document.getElementById("name");
+        const addressField = document.getElementById("address");
+        const cityField = document.getElementById("city");
+        const stateField = document.getElementById("state");
+        const mobileField = document.getElementById("mobile");
+
+        const name = nameField.value;
+        const address = addressField.value;
+        const city = cityField.value;
+        const state = stateField.value;
+        const mobile = mobileField.value;
+
+        if (!name || !address || !city || !state || !mobile) {
+          alert("Please fill out all fields!");
+          return;
+        }
+
+        const newAddress = `
+        <div class="address-item">
+          <input type="radio" name="address" onclick="setDefault(this)" />
+          <div class="address-content">
+            <strong>${name}</strong><br />
+            ${address}<br />
+            ${city}, ${state}<br />
+            Mobile: ${mobile}
+            <div class="actions">
+              <button class="btn-edit">EDIT</button>
+              <button class="btn-delete" onclick="deleteAddress(this)">DELETE</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+        document
+          .querySelector(".saved-address")
+          .insertAdjacentHTML("beforeend", newAddress);
+
+        // Clear the form fields
+        nameField.value = "";
+        addressField.value = "";
+        cityField.value = "";
+        stateField.value = "";
+        mobileField.value = "";
+
+        toggleAddAddressForm();
+      }
+
+      function deleteAddress(button) {
+        button.closest(".address-item").remove();
+      }
+    </script>
+  </body>
 </html>

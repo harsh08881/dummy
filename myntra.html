@@ -10,11 +10,15 @@
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .modal {
       width: 400px;
-      margin: 50px auto;
+      margin: auto;
       padding: 20px;
       background-color: #fff;
       border-radius: 8px;
@@ -146,7 +150,7 @@
           Mobile: 9369749470
           <div class="actions">
             <button class="btn-edit">EDIT</button>
-            <button class="btn-delete">DELETE</button>
+            <button class="btn-delete" onclick="deleteAddress(this)">DELETE</button>
           </div>
         </div>
       </div>
@@ -159,7 +163,7 @@
           Hardoi, Uttar Pradesh
           <div class="actions">
             <button class="btn-edit">EDIT</button>
-            <button class="btn-delete">DELETE</button>
+            <button class="btn-delete" onclick="deleteAddress(this)">DELETE</button>
           </div>
         </div>
       </div>
@@ -193,9 +197,20 @@
       const buttonElement = document.querySelector('.btn');
       if (modalElement) {
         modalElement.style.display = 'block';
-         buttonElement.style.display ='none';
+         buttonElement.style.display = 'none';
       }
     }
+
+    function deleteAddress(button) {
+  // Find the address card (parent '.address-item') of the clicked button
+  const addressCard = button.closest('.address-item');
+  
+  // Remove the address card from the DOM
+  if (addressCard) {
+    addressCard.remove();
+  }
+}
+
   </script>
 </body>
 </html>

@@ -49,6 +49,7 @@
 
       /* Sidebar */
       .aa {
+        display: block;
         float: left; /* Align to the left */
         width: 30%;
         height: calc(100vh - 100px); /* Full height minus header and footer */
@@ -97,5 +98,26 @@
       <div class="post">Post 9</div>
     </main>
     <footer class="footer">Instagram Bottom Navigation</footer>
+    <script>
+      function hideDivOnMobile() {
+        const div = document.querySelector(".aa"); // Replace 'myDiv' with your div's ID
+        const ma = document.querySelector('.main-content')
+        if (window.innerWidth <= 468) {
+          // Check for mobile screen width
+          div.style.display = "none";
+          ma.style.width = '100%';
+        } else {
+          div.style.display = "block"; // Reset to default (visible) for larger screens
+          ma.style.width = '70%';
+        
+        }
+      }
+
+      // Call the function initially
+      hideDivOnMobile();
+
+      // Optionally, call the function on window resize to handle screen size changes dynamically
+      window.addEventListener("resize", hideDivOnMobile);
+    </script>
   </body>
 </html>

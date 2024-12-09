@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .container{
-           margin: 0px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equal Width Divs - Float</title>
+  <style>
+    body {
+      margin: 0;
+    }
 
-        }
-        .wss{
-            color: red;
-           width: 1000px;
-        }
-        .ww {
-           color: red;
-           width: 50%;
-        }
-        
-    </style>
+    .box {
+      float: left;
+      width: 50%; /* Each box takes half the width */
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+     .q{
+        background-color: red;
+     }
+
+    .box1 {
+      background-color: #007bff; /* Blue background */
+      width: 50%;
+      height: 100vh;
+      padding: 25px;
+      margin: auto;
+      bo
+    }
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="wss">ckbhdbckewjbvkjwbvkjw</div>
-        <div class="wss">ckbhdbckewjbvkjwbvkjw</div>
-        <div class="w">ckbhdbckewjbvkjwbvkjw</div>
-        <div class="w">ckbhdbckewjbvkjwbvkjw</div>
-        <div class="w">ckbhdbckewjbvkjwbvkjw</div>
-    </div>    
+    <div class="q"><div class="box1">Box 1</div></div>
+  <!-- <div class="box2">Box 2</div> -->
 </body>
 </html>

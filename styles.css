@@ -1,0 +1,67 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent body scrolling */
+}
+
+/* Header */
+.header {
+    position: fixed; /* Stays at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    line-height: 50px;
+    z-index: 1000; /* Keeps it above other content */
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    position: fixed; /* Stays at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    line-height: 50px;
+    z-index: 1000;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 50px; /* Space for header */
+    margin-bottom: 50px; /* Space for footer */
+    height: calc(100vh - 100px); /* Remaining height after header and footer */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+/* Posts */
+.post {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+ .aa {
+   height: 100vh;
+   width: 30%;
+ }

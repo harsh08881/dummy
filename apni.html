@@ -20,67 +20,96 @@
         box-shadow: 1px 4px 4px 0px rgba(165, 165, 165, 0.25);
         width: 100%;
         display: flex;
-       
       }
-      .first-div{
-         flex: 0 0 25%;
-      }
-
-      .second-div{
-
-      }
-      .third-div{
-
-      }
-      .forth-div{
-
+      .first-div {
+        flex: 0 0 25%;
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
-      .busdetails{
+      .second-div {
+        flex: 0 0 33.3333%;
+      }
+      .third-div {
+        flex: 0 0 16.666667%;
+      }
+      .forth-div {
+        flex: 0 0 25%;
+      }
 
+      .busdetails {
+      }
+
+      .actype-span {
+        display: flex;
+        background-color: #e1ebfb;
+        color: #2d6abd;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 4px;
+        padding: 4px 8px;
+        align-items: center;
+      }
+      span img {
+        width: 24px;
+      }
+      .agency{
+        color: #7163c4;
+    font-size: 16px;
+    font-weight: 500;
+      }
+      img{
+        width: 20px;
+        margin-right: 0.5rem;
       }
       .D{
+        margin-bottom: 0.5rem;
+        align-items: center;
+      }
+      .actype{
+        display: flex;
+      }
+      .busoperator{
+        display: flex;
+      }
+      .bus-type{
+        display: flex;
+      }
+      .bustiming{
         display: flex;
       }
 
-
+      
     </style>
   </head>
   <body>
     <div class="main-div">
       <div class="container">
         <div class="first-div">
-            <div class="busdetails">
-                <div class="actype D">
-                 <span>
-                  <img src="./img/air-conditioner-icon.png" alt="">
-                  "AC Bus"
-                 </span>
-
-                </div>
-                <div class="busoperator D">
-                  <img src="./img/travel_agency.png" alt="">
-                  <span>
-                    Yuvraj Travels jaipur
-                  </span>
-                </div>
-                <div class="bus-type D">
-                  <img src="./img/list_bus (1).png" alt="">
-                    <span> Non AC Sleeper</span>
-                </div>
-                <div class="bustiming D">
-                  <img src="./img/timing.png" alt="">
-                   <span>
-                    6:36H
-                   </span>
-                </div>
-
-
+          <div class="busdetails">
+            <div class="actype D">
+              <span class="actype-span">
+                <img src="./img/air-conditioner-icon.png" alt="" style="margin: 6px 10px;"/>
+                AC Bus
+              </span>
             </div>
+            <div class="busoperator D agency ">
+              <img src="./img/travel_agency.png" alt="" />
+              <span> Yuvraj Travels Jaipur </span>
+            </div>
+            <div class="bus-type D">
+              <img src="./img/list_bus (1).png" alt="" />
+              <span> Non AC Sleeper</span>
+            </div>
+            <div class="bustiming D">
+              <img src="./img/timing.png" alt="" />
+              <span> 6:36H </span>
+            </div>
+          </div>
         </div>
-        <div class="second-div"></div>
-        <div class="third-div"></div>
-        <div class="forth-div"></div>
+        <div class="second-div">Hello</div>
+        <div class="third-div">Hello</div>
+        <div class="forth-div">Hello</div>
       </div>
     </div>
   </body>

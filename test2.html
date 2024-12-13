@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+    }
+    .container {
+      display: flex;
+      border: 1px solid black;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .item {
+      background-color: lightblue;
+      padding: 10px;
+      margin: 5px;
+    }
+    .item:nth-child(1) {
+      order: 2; /* Appear 3rd */
+    }
+    .item:nth-child(2) {
+      order: -1; /* Appear 1st */
+    }
+    .item:nth-child(3) {
+      order: 1; /* Appear 2nd */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+</body>
+</html>

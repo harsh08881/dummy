@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      :root {
+        --dark-green: #005f00;
+        --white-text: #fff;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -20,6 +24,7 @@
         box-shadow: 1px 4px 4px 0px rgba(165, 165, 165, 0.25);
         width: 100%;
         display: flex;
+        align-items: center;
       }
       .first-div {
         flex: 0 0 25%;
@@ -29,12 +34,18 @@
 
       .second-div {
         flex: 0 0 33.3333%;
+        padding-left: 15px;
+        padding-right: 15px;
       }
       .third-div {
         flex: 0 0 16.666667%;
       }
       .forth-div {
+        display: flex;
         flex: 0 0 25%;
+        justify-content: flex-end;
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
       .busdetails {
@@ -53,33 +64,49 @@
       span img {
         width: 24px;
       }
-      .agency{
+      .agency {
         color: #7163c4;
-    font-size: 16px;
-    font-weight: 500;
+        font-size: 16px;
+        font-weight: 500;
       }
-      img{
+      img {
         width: 20px;
         margin-right: 0.5rem;
       }
-      .D{
+      .D {
         margin-bottom: 0.5rem;
         align-items: center;
       }
-      .actype{
+      .actype {
         display: flex;
       }
-      .busoperator{
+      .busoperator {
         display: flex;
       }
-      .bus-type{
+      .bus-type {
         display: flex;
       }
-      .bustiming{
+      .bustiming {
         display: flex;
       }
-
-      
+      .sec {
+        display: flex;
+        justify-content: space-between;
+      }
+      span {
+        font-weight: 600;
+      }
+      button {
+        background: var(--dark-green);
+        color: var(--white-text);
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 12px 24px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -89,11 +116,15 @@
           <div class="busdetails">
             <div class="actype D">
               <span class="actype-span">
-                <img src="./img/air-conditioner-icon.png" alt="" style="margin: 6px 10px;"/>
+                <img
+                  src="./img/air-conditioner-icon.png"
+                  alt=""
+                  style="margin: 6px 7px; margin-right: 7px"
+                />
                 AC Bus
               </span>
             </div>
-            <div class="busoperator D agency ">
+            <div class="busoperator D agency">
               <img src="./img/travel_agency.png" alt="" />
               <span> Yuvraj Travels Jaipur </span>
             </div>
@@ -103,13 +134,35 @@
             </div>
             <div class="bustiming D">
               <img src="./img/timing.png" alt="" />
-              <span> 6:36H </span>
+              <span> 6:36 H </span>
             </div>
           </div>
         </div>
-        <div class="second-div">Hello</div>
-        <div class="third-div">Hello</div>
-        <div class="forth-div">Hello</div>
+        <div class="second-div">
+          <div class="sec">
+            <div class="sec-c">
+              <span>3:00 PM</span>
+            </div>
+            <img
+              src="./img/bus-arrow.png"
+              alt=""
+              style="height: 22px; margin: auto"
+            />
+            <div class="sec-c">
+              <span>6:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="third-div">
+          <div class="pricing">
+            <span>1500</span>
+            <span>1450</span>
+          </div>
+          <span>Discount Off</span>
+        </div>
+        <div class="forth-div">
+          <button>Book Seat</button>
+        </div>
       </div>
     </div>
   </body>

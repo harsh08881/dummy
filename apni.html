@@ -25,6 +25,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
       }
       .first-div {
         flex: 0 0 25%;
@@ -38,7 +39,12 @@
         padding-right: 15px;
       }
       .third-div {
+        display: flex;
+        flex-direction: column;
         flex: 0 0 16.666667%;
+        padding-left: 15px;
+        padding-right: 15px;
+        align-items: flex-end;
       }
       .forth-div {
         display: flex;
@@ -107,6 +113,25 @@
         padding: 12px 24px;
         cursor: pointer;
       }
+      .original_price {
+        color: #78716c;
+        font-weight: 500;
+        font-size: 20px;
+        text-decoration-line: line-through;
+      }
+      .price_after_discount {
+        color: #232323;
+        font-weight: 800;
+        font-size: 20px;
+      }
+      .discount__off {
+        color: #207e37;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      /* .pricing{
+        text-align: left;
+      } */
     </style>
   </head>
   <body>
@@ -155,10 +180,10 @@
         </div>
         <div class="third-div">
           <div class="pricing">
-            <span>1500</span>
-            <span>1450</span>
+            <span class="original_price">1500</span>
+            <span class="price_after_discount">1450</span>
           </div>
-          <span>Discount Off</span>
+          <span class="discount__off">Rs 50 Off</span>
         </div>
         <div class="forth-div">
           <button>Book Seat</button>

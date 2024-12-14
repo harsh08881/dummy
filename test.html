@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    *{
-      margin: 0px;
-      padding: 0px;
-      box-sizing: border-box;
-    }
-    .container{
-      display: flex;
-      flex-wrap: wrap;
-      background-color: red;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active List</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .clickable {
+        padding: 10px;
+        background-color: lightgray;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .clickable.active {
+        border: 2px solid red;
+        background-color: blue;
+        color: white;
+      }
+      a{
+        text-decoration: none;
+      }
+    </style>
+  </head>
 
-    }
-    .filter{
-      flex:0 0 25%;
-      max-width: 25%;
-      background-color: green;
-      padding: 20px;
-    }
-    .bus{
-      flex:0 0 75%;
-      max-width: 75%;
-      background-color: aqua;
-      padding: 20px;
-    }
-    .bus-details{
-      border: 1px solid rgba(215, 215, 215, 1);
-      border-radius: 8px;
-      box-shadow: 1px 4px 4px 0px rgba(165, 165, 165, 0.25);
-      background-color: blue;
-      padding: 20px;
+  <body>
+    <ul class="menu">
+      <li>
+        <a href="#">
+          <div class="clickable">Item 1</div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="clickable">Item 2</div>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="clickable">Item 3</div>
+        </a>
+      </li>
+    </ul>
 
-    
-    }
-      </style>
-</head>
+    <script src="script.js"></script>
+    <script>
+      // Select all clickable div elements
+      const clickables = document.querySelectorAll(".clickable");
 
-<body>
+      clickables.forEach((clickable) => {
+        clickable.addEventListener("click", function (event) {
+          // Remove 'active' class from all clickables
+          clickables.forEach((item) => item.classList.remove("active"));
 
-  <div class="container">
-    <div class="filter">bkjblbllkb</div>
-    <div class="bus">
-      <div class="bus-details">Bus details here</div>
-      
-    </div>
-  </div>
-  
-</body>
+          // Add 'active' class to the clicked element
+          this.classList.add("active");
+
+          // Prevent default link behavior
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
 </html>

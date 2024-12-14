@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Wallet Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .wallet-card {
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+        .wallet-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .wallet-card img {
+            width: 50px;
+            height: 50px;
+        }
+        .wallet-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Connect to Your Wallet</h1>
+    <div id="wallet-container"></div>
+
+    <script>
+        const wallets = [
+            { name: "MetaMask", detect: () => window.ethereum && window.ethereum.isMetaMask },
+            { name: "Phantom", detect: () => window.solana && window.solana.isPhantom },
+            { name: "Venom Wallet", detect: () => window.venom },
+            { name: "Solflare", detect: () => window.solflare },
+        ];
+
+        const walletContainer = document.getElementById("wallet-container");
+
+        // Detect wallets and display them as cards
+        wallets.forEach(wallet => {
+            if (wallet.detect()) {
+                const walletCard = document.createElement("div");
+                walletCard.className = "wallet-card";
+
+                walletCard.innerHTML = `
+                    <img src="https://via.placeholder.com/50?text=${wallet.name}" alt="${wallet.name} Logo">
+                    <h3>${wallet.name}</h3>
+                `;
+
+                walletCard.addEventListener("click", async () => {
+                    try {
+                        if (wallet.name === "MetaMask") {
+                            await window.ethereum.request({ method: 'eth_requestAccounts' });
+                            alert("Connected to MetaMask");
+                        } else if (wallet.name === "Phantom") {
+                            const response = await window.solana.connect();
+                            alert(`Connected to Phantom: ${response.publicKey}`);
+                        } else if (wallet.name === "Venom Wallet") {
+                            const response = await window.venom.connect();
+                            alert("Connected to Venom Wallet");
+                        } else if (wallet.name === "Solflare") {
+                            await window.solflare.connect();
+                            alert("Connected to Solflare");
+                        }
+                    } catch (error) {
+                        alert(`Failed to connect to ${wallet.name}: ${error.message}`);
+                    }
+                });
+
+                walletContainer.appendChild(walletCard);
+            }
+        });
+
+        if (walletContainer.children.length === 0) {
+            walletContainer.innerHTML = "<p>No wallets detected. Please install a wallet to connect.</p>";
+        }
+    </script>
+</body>
+</html>

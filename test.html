@@ -1,65 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Active List</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      .clickable {
-        padding: 10px;
-        background-color: lightgray;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .clickable.active {
-        border: 2px solid red;
-        background-color: blue;
-        color: white;
-      }
-      a{
-        text-decoration: none;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .aa{
+      background-color: red;
+      color: gray;
+      padding: 20px;
+      text-align: center;
+    }
+    .cc{
+      color: aqua;
+      
+    }
+    body{
+      width: 100%;
+      text-align: center;
+     
+    }
+    div{
+      display: inline-block;
+      width: 45%;
+      height: 30vh;
+      background-color: green;
+      vertical-align: middle;
+     line-height: 30vh;
+    }
+   
 
-  <body>
-    <ul class="menu">
-      <li>
-        <a href="#">
-          <div class="clickable">Item 1</div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="clickable">Item 2</div>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <div class="clickable">Item 3</div>
-        </a>
-      </li>
-    </ul>
 
-    <script src="script.js"></script>
-    <script>
-      // Select all clickable div elements
-      const clickables = document.querySelectorAll(".clickable");
+  </style>
+</head>
+<body>
 
-      clickables.forEach((clickable) => {
-        clickable.addEventListener("click", function (event) {
-          // Remove 'active' class from all clickables
-          clickables.forEach((item) => item.classList.remove("active"));
-
-          // Add 'active' class to the clicked element
-          this.classList.add("active");
-
-          // Prevent default link behavior
-          event.preventDefault();
-        });
-      });
-    </script>
-  </body>
+ <div>kjbvkwbk</div>
+ <div>cbkbckebkv</div>
+  
+</body>
 </html>
